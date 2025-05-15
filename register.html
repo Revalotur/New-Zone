@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - PS Room Rental</title>
+    <link href="src/output.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #fde2f3;
+        }
+        .navbar-bg {
+            background-color: #1a1a1a;
+        }
+        .button-pink {
+            background-color: #f72585;
+            color: white;
+        }
+        .button-pink:hover {
+            background-color: #d01f6d;
+        }
+        .form-container {
+            background-color: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .input-field {
+            border: 2px solid #e5e7eb;
+            border-radius: 0.5rem;
+            padding: 0.75rem;
+            width: 100%;
+            transition: border-color 0.2s;
+        }
+        .input-field:focus {
+            border-color: #f72585;
+            outline: none;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Navbar -->
+    <nav class="navbar-bg p-4 sticky top-0 z-50 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-white text-2xl font-bold flex items-center">
+                <img src="assets/images/logo.png" alt="PS Rental Zone Logo" class="h-10 mr-2">
+                PS Rental Zone
+            </a>
+        </div>
+    </nav>
+
+    <!-- Register Form -->
+    <div class="container mx-auto px-4 py-8">
+        <div class="max-w-md mx-auto form-container p-8">
+            <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">Daftar Akun Baru</h2>
+            
+            <form id="registerForm" class="space-y-6">
+                <!-- Nama Lengkap -->
+                <div>
+                    <label for="fullName" class="block text-gray-700 mb-2">Nama Lengkap</label>
+                    <input type="text" id="fullName" name="fullName" class="input-field" required>
+                </div>
+
+                <!-- Email -->
+                <div>
+                    <label for="email" class="block text-gray-700 mb-2">Email</label>
+                    <input type="email" id="email" name="email" class="input-field" required>
+                </div>
+
+                <!-- Nomor Telepon -->
+                <div>
+                    <label for="phone" class="block text-gray-700 mb-2">Nomor Telepon</label>
+                    <input type="tel" id="phone" name="phone" class="input-field" required>
+                </div>
+
+                <!-- Password -->
+                <div>
+                    <label for="password" class="block text-gray-700 mb-2">Password</label>
+                    <input type="password" id="password" name="password" class="input-field" required>
+                </div>
+
+                <!-- Konfirmasi Password -->
+                <div>
+                    <label for="confirmPassword" class="block text-gray-700 mb-2">Konfirmasi Password</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" class="input-field" required>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="button-pink w-full py-3 rounded-lg font-semibold transition duration-200">
+                    Daftar
+                </button>
+
+                <p class="text-center text-gray-600 mt-4">
+                    Sudah punya akun? 
+                    <a href="login.html" class="text-pink-600 hover:text-pink-700 font-semibold">Masuk di sini</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validasi password match
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            
+            if (password !== confirmPassword) {
+                alert('Password dan konfirmasi password tidak cocok!');
+                return;
+            }
+
+            // Validasi format email
+            const email = document.getElementById('email').value;
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('Format email tidak valid!');
+                return;
+            }
+
+            // Validasi nomor telepon (format Indonesia)
+            const phone = document.getElementById('phone').value;
+            const phoneRegex = /^(\+62|62|0)8[1-9][0-9]{6,9}$/;
+            if (!phoneRegex.test(phone)) {
+                alert('Format nomor telepon tidak valid! Gunakan format: 08xxxxxxxxxx');
+                return;
+            }
+
+            // Jika semua validasi berhasil
+            alert('Registrasi berhasil! Silakan login.');
+            window.location.href = 'login.html';
+        });
+    </script>
+</body>
+</html>
