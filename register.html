@@ -37,6 +37,8 @@
             outline: none;
         }
     </style>
+    <!-- Tambahkan CDN SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body class="min-h-screen">
     <!-- Navbar -->
@@ -97,17 +99,51 @@
             </form>
         </div>
     </div>
-
+    <style>
+        body {
+            cursor: url('assets/images/tung.cur'), auto;
+        }
+        
+        a, button, .button-pink {
+            cursor: url('assets/images/tung.cur'), pointer;
+        }
+        
+        input.input-field {
+            cursor: url('assets/images/tung.cur'), text;
+        }
+    </style>
     <script>
         document.getElementById('registerForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
+            const showErrorAlert = (title, text) => {
+                Swal.fire({
+                    icon: 'error',
+                    title: title,
+                    text: text,
+                    confirmButtonColor: '#f72585',
+                    iconColor: '#d01f6d'
+                });
+            };
+
+            const showSuccessAlert = () => {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Registrasi Berhasil!',
+                    text: 'Silakan login untuk melanjutkan',
+                    confirmButtonColor: '#f72585',
+                    iconColor: '#1a1a1a'
+                }).then(() => {
+                    window.location.href = 'login.html';
+                });
+            };
+
             // Validasi password match
             const password = document.getElementById('password').value;
             const confirmPassword = document.getElementById('confirmPassword').value;
             
             if (password !== confirmPassword) {
-                alert('Password dan konfirmasi password tidak cocok!');
+                showErrorAlert('Oops...', 'Password dan konfirmasi password tidak cocok!');
                 return;
             }
 
@@ -115,21 +151,20 @@
             const email = document.getElementById('email').value;
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(email)) {
-                alert('Format email tidak valid!');
+                showErrorAlert('Format Email Salah', 'Mohon masukkan alamat email yang valid');
                 return;
             }
 
-            // Validasi nomor telepon (format Indonesia)
+            // Validasi nomor telepon
             const phone = document.getElementById('phone').value;
             const phoneRegex = /^(\+62|62|0)8[1-9][0-9]{6,9}$/;
             if (!phoneRegex.test(phone)) {
-                alert('Format nomor telepon tidak valid! Gunakan format: 08xxxxxxxxxx');
+                showErrorAlert('Nomor Tidak Valid', 'Gunakan format: 08xxxxxxxxxx');
                 return;
             }
 
             // Jika semua validasi berhasil
-            alert('Registrasi berhasil! Silakan login.');
-            window.location.href = 'login.html';
+            showSuccessAlert();
         });
     </script>
 </body>
