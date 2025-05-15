@@ -17,20 +17,31 @@
         .button-pink {
             background-color: #f72585; 
             color: white;
+            transition: transform 0.2s, box-shadow 0.2s;
         }
         .button-pink:hover {
             background-color: #d01f6d; 
+            transform: scale(1.08) rotate(-2deg);
+            box-shadow: 0 8px 24px 0 rgba(247,37,133,0.2);
         }
         .button-outline-pink {
             border: 2px solid #f72585;
             color: #f72585;
+            transition: transform 0.2s, box-shadow 0.2s;
         }
         .button-outline-pink:hover {
             background-color: #f72585;
             color: white;
+            transform: scale(1.08) rotate(-2deg);
+            box-shadow: 0 8px 24px 0 rgba(247,37,133,0.2);
         }
         .card-bg {
             background-color: #ffffff; /* White Card Background */
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .card-bg:hover {
+            transform: translateY(-10px) scale(1.04);
+            box-shadow: 0 12px 32px 0 rgba(30,30,30,0.15);
         }
         .text-pink-accent {
             color: #f72585; /* Hot Pink for Accents */
@@ -55,6 +66,24 @@
             font-size: 3rem; /* 48px */
             margin-bottom: 1rem; /* 16px */
             color: #f72585; /* text-pink-accent */
+        }
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .fade-in-up {
+            opacity: 0;
+            animation: fadeInUp 1s ease-out forwards;
+        }
+        .fade-in-up-delay {
+            opacity: 0;
+            animation: fadeInUp 1s 0.5s ease-out forwards;
         }
     </style>
 </head>
@@ -129,16 +158,16 @@
 
     <!-- Hero Section -->
     <div id="home" class="hero-bg text-white min-h-screen flex items-center justify-center">
-        <div class="text-center bg-black bg-opacity-70 p-12 rounded-xl shadow-2xl">
-            <h2 class="text-6xl font-bold mb-6">Selamat Datang di PS Rental Zone!</h2>
-            <p class="text-2xl mb-10">Destinasi utama untuk pengalaman gaming PlayStation terbaik dan tak terlupakan.</p>
-            <a href="#about" class="button-pink px-10 py-4 rounded-full text-xl font-semibold transition-transform transform hover:scale-105">Jelajahi Sekarang</a>
-        </div>
+    <div class="text-center bg-black bg-opacity-70 p-12 rounded-xl shadow-2xl fade-in-up">
+        <h2 class="text-6xl font-bold mb-6 fade-in-up">Selamat Datang di PS Rental Zone!</h2>
+        <p class="text-2xl mb-10 fade-in-up-delay">Destinasi utama untuk pengalaman gaming PlayStation terbaik dan tak terlupakan.</p>
+        <a href="#about" class="button-pink px-10 py-4 rounded-full text-xl font-semibold transition-transform transform hover:scale-105 fade-in-up-delay">Jelajahi Sekarang</a>
+    </div>
     </div>
 
     <!-- About Us Section -->
     <section id="about" class="container mx-auto py-20 px-4">
-        <h2 class="section-title text-black-accent">Tentang PS Rental Zone</h2>
+            <h2 class="section-title text-black-accent fade-in-up">Tentang PS Rental Zone</h2>
         <div class="grid md:grid-cols-2 gap-12 items-center">
             <div>
                 <img src="assets/images/interior.jpeg" alt="Interior PS Rental Zone" class="rounded-lg shadow-xl w-full">
@@ -267,7 +296,7 @@
             window.location.href = 'login.html';
         });
     });
-
+    
     // Menu Toggle
     const menuButton = document.getElementById('menuButton');
     const menuDropdown = document.getElementById('menuDropdown');
