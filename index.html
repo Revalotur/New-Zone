@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PS Zone</title>
-    <link rel="icon" type="image/png" href="assets/images/logo.png"> <!-- Tambahkan baris ini -->
+    <link rel="icon" type="image/png" href="assets/images/logo.png">
     <link href="src/output.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -230,6 +230,7 @@
 
         <!-- Mobile Menu -->
         <div class="md:hidden hidden px-4 pt-4 pb-2 space-y-2 text-white" id="mobileMenu">
+            <div class="px-4 py-6 space-y-4">
             <a href="#home" class="block hover:text-pink-300">Beranda</a>
             <a href="#about" class="block hover:text-pink-300">Tentang Kami</a>
             <a href="#services" class="block hover:text-pink-300">Layanan</a>
@@ -242,11 +243,11 @@
             <div id="mobileProfileSection" class="hidden border-t border-gray-600 mt-2 pt-2">
                 <div class="flex items-center space-x-2 text-white">
                     <i class="fas fa-user-circle text-2xl"></i>
-                    <span id="mobileUserNameDisplay" class="text-sm"></span>
+                    <span id="mobileUserEmailDisplay" class="text-sm"></span>
                 </div>
                 <a href="#" class="block hover:text-pink-300 mt-2">Profil Saya</a>
                 <a href="#" class="block hover:text-pink-300">Riwayat</a>
-                <a href="#" id="mobileSignOutButton" class="block text-red-400 hover:text-red-300 mt-2">Keluar</a>
+                <a href="login.html" id="mobileSignOutButton" class="block text-red-400 hover:text-red-300 mt-2">Keluar</a>
             </div>
 
             <!-- Tombol Login untuk Mobile -->
@@ -254,6 +255,7 @@
                 <i class="fas fa-sign-in-alt mr-2"></i>Login
             </a>
         </div>
+    </div>
     </nav>
 
 
@@ -381,90 +383,77 @@
 
 
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', function() {
+        // Inisialisasi elemen-elemen
         const profileSection = document.getElementById('profileSection');
         const loginButton = document.getElementById('loginButton');
-        const profileDropdown = document.getElementById('profileDropdown');
-        const dropdownMenu = document.getElementById('dropdownMenu');
-        const signOutButton = document.getElementById('signOutButton');
-        const userName = document.getElementById('userName');
+        const mobileProfileSection = document.getElementById('mobileProfileSection');
+        const mobileLoginButton = document.getElementById('mobileLoginButton');
+        const mobileUserEmailDisplay = document.getElementById('mobileUserEmailDisplay');
+        const mobileSignOutButton = document.getElementById('mobileSignOutButton');
+        const menuButton = document.getElementById('menuButton');
+        const menuDropdown = document.getElementById('menuDropdown');
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
 
-        // Check if user is logged in (you can modify this based on your login logic)
+        // Cek status login
         const isLoggedIn = localStorage.getItem('isLoggedIn');
         const userEmail = localStorage.getItem('userEmail');
 
         if (isLoggedIn === 'true' && userEmail) {
-            profileSection.classList.remove('hidden');
-            loginButton.classList.add('hidden');
-            userName.textContent = userEmail.split('@')[0]; // Display username from email
+            mobileProfileSection.classList.remove('hidden');
+            mobileLoginButton.classList.add('hidden');
+            mobileUserEmailDisplay.textContent = userEmail;
+
+            // Event listener untuk tombol keluar mobile
+            mobileSignOutButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                localStorage.removeItem('isLoggedIn');
+                localStorage.removeItem('userEmail');
+                window.location.href = 'login.html';
+            });
+        } else {
+            mobileProfileSection.classList.add('hidden');
+            mobileLoginButton.classList.remove('hidden');
         }
 
-        // Toggle dropdown menu
-        profileDropdown.addEventListener('click', function () {
-            dropdownMenu.classList.toggle('hidden');
+        // Hamburger menu toggle
+        hamburgerBtn.addEventListener('click', (e) => {
+            e.stopPropagation(); // Mencegah event bubbling
+            hamburgerBtn.classList.toggle('hamburger-active');
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('show');
         });
 
-        // Close dropdown when clicking outside
-        document.addEventListener('click', function (event) {
-            if (!profileDropdown.contains(event.target)) {
-                dropdownMenu.classList.add('hidden');
+        // Menutup menu saat klik di luar
+        document.addEventListener('click', (event) => {
+            if (!hamburgerBtn.contains(event.target) && !mobileMenu.contains(event.target)) {
+                hamburgerBtn.classList.remove('hamburger-active');
+                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('show');
             }
         });
 
-        // Handle sign out
-        signOutButton.addEventListener('click', function (e) {
-            e.preventDefault();
-            localStorage.removeItem('isLoggedIn');
-            localStorage.removeItem('userEmail');
-            window.location.href = 'login.html';
+        // Menu dropdown desktop
+        menuButton.addEventListener('click', function(e) {
+            e.stopPropagation();
+            menuDropdown.classList.toggle('hidden');
+        });
+
+        // Menutup dropdown desktop saat klik di luar
+        document.addEventListener('click', function(event) {
+            if (!menuButton.contains(event.target)) {
+                menuDropdown.classList.add('hidden');
+            }
+        });
+
+        // Menutup menu mobile saat mengklik link
+        document.querySelectorAll('#mobileMenu a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburgerBtn.classList.remove('hamburger-active');
+                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('show');
+            });
         });
     });
-
-     const menuButton = document.getElementById('menuButton');
-  const menuDropdown = document.getElementById('menuDropdown');
-  const hamburgerBtn = document.getElementById('hamburgerBtn');
-  const mobileMenu = document.getElementById('mobileMenu');
-
-  // Toggle dropdown menu
-  menuButton.addEventListener('click', function (e) {
-    e.stopPropagation();
-    menuDropdown.classList.toggle('hidden');
-  });
-
-  // Tutup dropdown jika klik di luar
-  document.addEventListener('click', function (event) {
-    if (!menuButton.contains(event.target)) {
-      menuDropdown.classList.add('hidden');
-    }
-  });
-
-  menuDropdown.addEventListener('click', function () {
-    menuDropdown.classList.add('hidden');
-  });
-
-  // Toggle hamburger menu
-  // Update bagian hamburger menu toggle
-  hamburgerBtn.addEventListener('click', () => {
-      hamburgerBtn.classList.toggle('hamburger-active');
-      mobileMenu.classList.toggle('hidden');
-      mobileMenu.classList.toggle('show');
-  });
-  
-  // Tambahkan event listener untuk menutup menu saat mengklik di luar
-  document.addEventListener('click', (event) => {
-      if (!hamburgerBtn.contains(event.target) && !mobileMenu.contains(event.target)) {
-          hamburgerBtn.classList.remove('hamburger-active');
-          mobileMenu.classList.add('hidden');
-          mobileMenu.classList.remove('show');
-      }
-  });
-  
-  // Menutup menu saat mengklik link
-  document.querySelectorAll('#mobileMenu a').forEach(link => {
-      link.addEventListener('click', () => {
-          hamburgerBtn.classList.remove('hamburger-active');
-          mobileMenu.classList.add('hidden');
-          mobileMenu.classList.remove('show');
-      });
-  });
 </script>
