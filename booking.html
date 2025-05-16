@@ -66,53 +66,31 @@
             background-position: center;
         }
 
-        .hamburger-line {
-            width: 24px;
-            height: 3px;
-            background-color: white;
-            transition: all 0.3s ease-in-out;
-            position: relative;
+        .hamburger-icon {
+            transition: all 0.5s ease-in-out;
+            transform-origin: center;
         }
-
-        .hamburger-line::before,
-        .hamburger-line::after {
-            content: '';
-            position: absolute;
-            width: 24px;
-            height: 3px;
-            background-color: white;
-            transition: all 0.3s ease-in-out;
+        
+        .hamburger-active .hamburger-icon {
+            animation: gamepadWiggle 1s ease-in-out infinite;
+            color: #f72585;
         }
-
-        .hamburger-line::before {
-            transform: translateY(-8px);
-        }
-
-        .hamburger-line::after {
-            transform: translateY(8px);
-        }
-
-        .hamburger-active .hamburger-line {
-            background-color: transparent;
-        }
-
-        .hamburger-active .hamburger-line::before {
-            transform: rotate(45deg);
-        }
-
-        .hamburger-active .hamburger-line::after {
-            transform: rotate(-45deg);
-        }
-
-        #mobileMenu {
-            transform: translateY(-100%);
-            transition: all 0.3s ease-in-out;
-            opacity: 0;
-        }
-
-        #mobileMenu.show {
-            transform: translateY(0);
-            opacity: 1;
+        @keyframes gamepadWiggle {
+            0% {
+                transform: rotate(0deg) scale(1);
+            }
+            25% {
+                transform: rotate(-15deg) scale(1.2);
+            }
+            50% {
+                transform: rotate(0deg) scale(1);
+            }
+            75% {
+                transform: rotate(15deg) scale(1.2);
+            }
+            100% {
+                transform: rotate(0deg) scale(1);
+            }
         }
     </style>
 </head>
@@ -128,8 +106,8 @@
             </a>
 
             <!-- Tombol Hamburger untuk Mobile -->
-            <button id="hamburgerBtn" class="md:hidden text-white focus:outline-none p-2">
-                <div class="hamburger-line"></div>
+            <button id="hamburgerBtn" class="md:hidden text-white focus:outline-none p-2 flex items-center">
+                <i class="ri-gamepad-line text-2xl hamburger-icon"></i>
             </button>
 
             <!-- Menu Desktop -->
