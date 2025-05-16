@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,117 +12,150 @@
         body {
             background-color: #fde2f3;
         }
+
         .navbar-bg {
-            background-color: #1a1a1a; 
+            background-color: #1a1a1a;
         }
+
         .button-pink {
-            background-color: #f72585; 
+            background-color: #f72585;
             color: white;
             transition: transform 0.2s, box-shadow 0.2s;
         }
+
         .button-pink:hover {
-            background-color: #d01f6d; 
+            background-color: #d01f6d;
             transform: scale(1.08) rotate(-2deg);
-            box-shadow: 0 8px 24px 0 rgba(247,37,133,0.2);
+            box-shadow: 0 8px 24px 0 rgba(247, 37, 133, 0.2);
         }
+
         .button-outline-pink {
             border: 2px solid #f72585;
             color: #f72585;
             transition: transform 0.2s, box-shadow 0.2s;
         }
+
         .button-outline-pink:hover {
             background-color: #f72585;
             color: white;
             transform: scale(1.08) rotate(-2deg);
-            box-shadow: 0 8px 24px 0 rgba(247,37,133,0.2);
+            box-shadow: 0 8px 24px 0 rgba(247, 37, 133, 0.2);
         }
+
         .card-bg {
-            background-color: #ffffff; /* White Card Background */
+            background-color: #ffffff;
+            /* White Card Background */
             transition: transform 0.3s, box-shadow 0.3s;
         }
+
         .card-bg:hover {
             transform: translateY(-10px) scale(1.04);
-            box-shadow: 0 12px 32px 0 rgba(30,30,30,0.15);
+            box-shadow: 0 12px 32px 0 rgba(30, 30, 30, 0.15);
         }
+
         .text-pink-accent {
-            color: #f72585; /* Hot Pink for Accents */
+            color: #f72585;
+            /* Hot Pink for Accents */
         }
+
         .text-black-accent {
-            color: #1a1a1a; /* Black for Accents */
+            color: #1a1a1a;
+            /* Black for Accents */
         }
+
         .hero-bg {
             background-image: url('https://source.unsplash.com/1600x900/?gaming,lounge,neon-lights');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed; /* Parallax-like effect */
+            background-attachment: fixed;
+            /* Parallax-like effect */
         }
+
         .section-title {
-            font-size: 2.5rem; /* 40px */
+            font-size: 2.5rem;
+            /* 40px */
             font-weight: bold;
             text-align: center;
-            margin-bottom: 3rem; /* 48px */
-            color: #1a1a1a; /* text-black-accent */
+            margin-bottom: 3rem;
+            /* 48px */
+            color: #1a1a1a;
+            /* text-black-accent */
         }
+
         .feature-icon {
-            font-size: 3rem; /* 48px */
-            margin-bottom: 1rem; /* 16px */
-            color: #f72585; /* text-pink-accent */
+            font-size: 3rem;
+            /* 48px */
+            margin-bottom: 1rem;
+            /* 16px */
+            color: #f72585;
+            /* text-pink-accent */
         }
+
         @keyframes fadeInUp {
             0% {
                 opacity: 0;
                 transform: translateY(40px);
             }
+
             100% {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
+
         .fade-in-up {
             opacity: 0;
             animation: fadeInUp 1s ease-out forwards;
         }
+
         .fade-in-up-delay {
             opacity: 0;
             animation: fadeInUp 1s 0.5s ease-out forwards;
         }
     </style>
 </head>
+
 <body class="bg-pink-100">
     <!-- Navbar -->
-    <nav class="navbar-bg p-4 sticky top-0 z-50 shadow-lg">
+    <nav class="navbar-bg p-4 sticky top-0 z-50 shadow-lg bg-blue-700">
         <div class="container mx-auto flex justify-between items-center">
+            <!-- Logo -->
             <a href="index.html" class="text-white text-2xl font-bold flex items-center">
-                <img src="assets/images/logo.png" alt="PS Rental Zone Logo" class="h-10 mr-2">
+                <img src="assets/images/logo.png" alt="PS Rental Zone Logo" class="h-10 mr-2" />
                 PS Rental Zone
             </a>
-            
-            <!-- Hamburger Menu untuk Mobile -->
+
+            <!-- Tombol Hamburger untuk Mobile -->
             <button id="hamburgerBtn" class="md:hidden text-white focus:outline-none">
-                <i class="fas fa-bars text-2xl"></i>
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
             </button>
-            
+
             <!-- Menu Desktop -->
             <div class="hidden md:flex items-center space-x-6">
+                <!-- Dropdown Menu -->
                 <div class="relative">
                     <button id="menuButton" class="text-white hover:text-pink-300 flex items-center">
                         Menu
                         <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                         </svg>
                     </button>
-                    <div id="menuDropdown" class="hidden absolute w-48 bg-white rounded-lg shadow-xl py-2 mt-2 -left-4 z-50">
-                        <a href="#home" class="block px-4 py-2 text-gray-800 hover:bg-pink-100 transition-colors duration-200">Beranda</a>
-                        <a href="#about" class="block px-4 py-2 text-gray-800 hover:bg-pink-100 transition-colors duration-200">Tentang Kami</a>
-                        <a href="#services" class="block px-4 py-2 text-gray-800 hover:bg-pink-100 transition-colors duration-200">Layanan</a>
-                        <a href="#contact" class="block px-4 py-2 text-gray-800 hover:bg-pink-100 transition-colors duration-200">Kontak</a>
+                    <div id="menuDropdown"
+                        class="hidden absolute w-48 bg-white rounded-lg shadow-xl py-2 mt-2 -left-4 z-50">
+                        <a href="#home" class="block px-4 py-2 text-gray-800 hover:bg-pink-100">Beranda</a>
+                        <a href="#about" class="block px-4 py-2 text-gray-800 hover:bg-pink-100">Tentang Kami</a>
+                        <a href="#services" class="block px-4 py-2 text-gray-800 hover:bg-pink-100">Layanan</a>
+                        <a href="#contact" class="block px-4 py-2 text-gray-800 hover:bg-pink-100">Kontak</a>
                     </div>
                 </div>
-                
+
+                <!-- Menu Tautan -->
                 <a href="booking.html" class="text-white hover:text-pink-300">Pesan</a>
                 <a href="jadwal_ruangan.html" class="text-white hover:text-pink-300">Jadwal</a>
                 <a href="vip_room.html" class="text-white hover:text-pink-300">Catalog</a>
-                
+
                 <!-- Profile Section -->
                 <div id="profileSection" class="hidden relative">
                     <button id="profileDropdown" class="flex items-center space-x-2 text-white hover:text-pink-300">
@@ -139,49 +173,60 @@
                         <a href="#" id="signOutButton" class="block px-4 py-2 text-red-600 hover:bg-red-50">Keluar</a>
                     </div>
                 </div>
-                
+
+                <!-- Tombol Login -->
                 <a href="login.html" id="loginButton" class="text-white hover:text-pink-300">
                     <i class="fas fa-sign-in-alt"></i>
                 </a>
             </div>
         </div>
+
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden px-4 pt-4 pb-2 space-y-2 text-white" id="mobileMenu">
+            <a href="#home" class="block hover:text-pink-300">Beranda</a>
+            <a href="#about" class="block hover:text-pink-300">Tentang Kami
+            </a>
+            <a href="#services" class="block hover:text-pink-300">Layanan</a>
+            <a href="booking.html" class="block hover:text-pink-300">Pesan</a>
+            <a href="jadwal_ruangan.html" class="block hover:text-pink-300">Jadwal</a>
+            <a href="vip_room.html" class="block hover:text-pink-300">Catalog</a>
+            <a href="#contact" class="block hover:text-pink-300">Kontak</a>
+        </div>
     </nav>
 
-    <!-- Mobile Menu Dropdown -->
-    <div id="mobileMenu" class="hidden bg-black bg-opacity-90 fixed top-16 left-0 w-full h-screen z-40 transition-all duration-300 ease-in-out">
-        <div class="px-4 py-6 space-y-4">
-            <a href="#home" class="block px-4 py-3 text-white hover:bg-pink-700 rounded-lg transition-colors duration-200">Beranda</a>
-            <a href="#about" class="block px-4 py-3 text-white hover:bg-pink-700 rounded-lg transition-colors duration-200">Tentang Kami</a>
-            <a href="#services" class="block px-4 py-3 text-white hover:bg-pink-700 rounded-lg transition-colors duration-200">Layanan</a>
-            <a href="booking.html" class="block px-4 py-3 text-white hover:bg-pink-700 rounded-lg transition-colors duration-200">Pesan Ruangan</a>
-            <a href="jadwal_ruangan.html" class="block px-4 py-3 text-white hover:bg-pink-700 rounded-lg transition-colors duration-200">Jadwal</a>
-            <a href="vip_room.html" class="block px-4 py-3 text-white hover:bg-pink-700 rounded-lg transition-colors duration-200">VIP Access</a>
-            <a href="#contact" class="block px-4 py-3 text-white hover:bg-pink-700 rounded-lg transition-colors duration-200">Kontak</a>
-        </div>
-    </div>
-</nav>
 
     <!-- Hero Section -->
     <div id="home" class="hero-bg text-white min-h-screen flex items-center justify-center">
-    <div class="text-center bg-black bg-opacity-70 p-12 rounded-xl shadow-2xl fade-in-up">
-        <h2 class="text-6xl font-bold mb-6 fade-in-up">Selamat Datang di PS Rental Zone!</h2>
-        <p class="text-2xl mb-10 fade-in-up-delay">Destinasi utama untuk pengalaman gaming PlayStation terbaik dan tak terlupakan.</p>
-        <a href="#about" class="button-pink px-10 py-4 rounded-full text-xl font-semibold transition-transform transform hover:scale-105 fade-in-up-delay">Jelajahi Sekarang</a>
-    </div>
+        <div class="text-center bg-black bg-opacity-70 p-12 rounded-xl shadow-2xl fade-in-up">
+            <h2 class="text-6xl font-bold mb-6 fade-in-up">Selamat Datang di PS Rental Zone!</h2>
+            <p class="text-2xl mb-10 fade-in-up-delay">Destinasi utama untuk pengalaman gaming PlayStation terbaik dan
+                tak terlupakan.</p>
+            <a href="#about"
+                class="button-pink px-10 py-4 rounded-full text-xl font-semibold transition-transform transform hover:scale-105 fade-in-up-delay">Jelajahi
+                Sekarang</a>
+        </div>
     </div>
 
     <!-- About Us Section -->
     <section id="about" class="container mx-auto py-20 px-4">
-            <h2 class="section-title text-black-accent fade-in-up">Tentang PS Rental Zone</h2>
+        <h2 class="section-title text-black-accent fade-in-up">Tentang PS Rental Zone</h2>
         <div class="grid md:grid-cols-2 gap-12 items-center">
             <div>
-                <img src="assets/images/interior.jpeg" alt="Interior PS Rental Zone" class="rounded-lg shadow-xl w-full">
+                <img src="assets/images/interior.jpeg" alt="Interior PS Rental Zone"
+                    class="rounded-lg shadow-xl w-full">
             </div>
             <div class="text-lg text-gray-700 space-y-4">
-                <p>Selamat datang di <strong class="text-pink-accent">PS Rental Zone</strong>, tempat di mana para gamer berkumpul untuk menikmati koleksi game PlayStation terbaru dan terpopuler dalam suasana yang nyaman dan modern.</p>
-                <p>Kami berdedikasi untuk menyediakan pengalaman bermain game yang imersif dengan fasilitas terbaik, mulai dari konsol PS5 terbaru, TV berkualitas tinggi, hingga kursi gaming ergonomis yang akan membuat sesi bermainmu semakin menyenangkan.</p>
-                <p>Lebih dari sekadar tempat rental, kami adalah komunitas. Kami percaya bahwa gaming adalah tentang kesenangan, persahabatan, dan petualangan. Bergabunglah dengan kami dan rasakan bedanya!</p>
-                <a href="#services" class="inline-block mt-6 button-pink px-8 py-3 rounded-full text-lg font-semibold">Lihat Layanan Kami</a>
+                <p>Selamat datang di <strong class="text-pink-accent">PS Rental Zone</strong>, tempat di mana para gamer
+                    berkumpul untuk menikmati koleksi game PlayStation terbaru dan terpopuler dalam suasana yang nyaman
+                    dan modern.</p>
+                <p>Kami berdedikasi untuk menyediakan pengalaman bermain game yang imersif dengan fasilitas terbaik,
+                    mulai dari konsol PS5 terbaru, TV berkualitas tinggi, hingga kursi gaming ergonomis yang akan
+                    membuat sesi bermainmu semakin menyenangkan.</p>
+                <p>Lebih dari sekadar tempat rental, kami adalah komunitas. Kami percaya bahwa gaming adalah tentang
+                    kesenangan, persahabatan, dan petualangan. Bergabunglah dengan kami dan rasakan bedanya!</p>
+                <a href="#services"
+                    class="inline-block mt-6 button-pink px-8 py-3 rounded-full text-lg font-semibold">Lihat Layanan
+                    Kami</a>
             </div>
         </div>
     </section>
@@ -191,35 +236,45 @@
         <div class="container mx-auto">
             <h2 class="section-title text-black-accent">Kenapa Memilih Kami?</h2>
             <div class="grid md:grid-cols-3 gap-10 text-center">
-                <div class="p-6 card-bg rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+                <div
+                    class="p-6 card-bg rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
                     <i class="fas fa-gamepad feature-icon"></i>
                     <h3 class="text-2xl font-bold mb-3 text-pink-accent">Koleksi Game Lengkap</h3>
                     <p class="text-gray-600">Dari rilisan terbaru hingga game klasik favorit, kami punya semuanya!</p>
                 </div>
-                <div class="p-6 card-bg rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+                <div
+                    class="p-6 card-bg rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
                     <i class="fas fa-couch feature-icon"></i>
                     <h3 class="text-2xl font-bold mb-3 text-pink-accent">Ruangan Nyaman & Stylish</h3>
                     <p class="text-gray-600">Desain ruangan modern dengan tema hitam dan pink yang memanjakan mata.</p>
                 </div>
-                <div class="p-6 card-bg rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+                <div
+                    class="p-6 card-bg rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
                     <i class="fas fa-star feature-icon"></i>
                     <h3 class="text-2xl font-bold mb-3 text-pink-accent">Pengalaman VIP Eksklusif</h3>
-                    <p class="text-gray-600">Nikmati fasilitas premium dan layanan terbaik di <a href="vip_room.html" class="text-blue-600 hover:underline">VIP Room</a> kami.</p>
+                    <p class="text-gray-600">Nikmati fasilitas premium dan layanan terbaik di <a href="vip_room.html"
+                            class="text-blue-600 hover:underline">VIP Room</a> kami.</p>
                 </div>
             </div>
             <div class="text-center mt-12">
-                 <a href="booking.html" class="button-pink px-10 py-4 rounded-full text-xl font-semibold transition-transform transform hover:scale-105">Pesan Ruangan Sekarang</a>
+                <a href="booking.html"
+                    class="button-pink px-10 py-4 rounded-full text-xl font-semibold transition-transform transform hover:scale-105">Pesan
+                    Ruangan Sekarang</a>
             </div>
         </div>
     </section>
-    
+
     <!-- Simplified Rooms Overview (Optional, jika masih ingin ada gambaran umum) -->
     <section id="room-overview" class="container mx-auto py-20 px-4">
         <h2 class="section-title text-black-accent">Pilihan Ruangan Kami</h2>
-        <p class="text-center text-lg text-gray-700 mb-10">Kami menyediakan berbagai pilihan ruangan yang dapat disesuaikan dengan kebutuhan gaming Anda, mulai dari ruangan tematik hingga pengalaman VIP yang tak tertandingi.</p>
+        <p class="text-center text-lg text-gray-700 mb-10">Kami menyediakan berbagai pilihan ruangan yang dapat
+            disesuaikan dengan kebutuhan gaming Anda, mulai dari ruangan tematik hingga pengalaman VIP yang tak
+            tertandingi.</p>
         <div class="flex justify-center space-x-6">
-            <a href="booking.html" class="button-pink px-8 py-3 rounded-full text-lg font-semibold">Lihat Semua Ruangan Tematik</a>
-            <a href="vip_room.html" class="button-outline-pink px-8 py-3 rounded-full text-lg font-semibold">Jelajahi VIP Room</a>
+            <a href="booking.html" class="button-pink px-8 py-3 rounded-full text-lg font-semibold">Lihat Semua Ruangan
+                Tematik</a>
+            <a href="vip_room.html" class="button-outline-pink px-8 py-3 rounded-full text-lg font-semibold">Jelajahi
+                VIP Room</a>
         </div>
     </section>
 
@@ -259,11 +314,12 @@
     <!-- JavaScript -->
     <script src="src/main.js"></script>
 </body>
+
 </html>
 
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
         const profileSection = document.getElementById('profileSection');
         const loginButton = document.getElementById('loginButton');
         const profileDropdown = document.getElementById('profileDropdown');
@@ -282,71 +338,50 @@
         }
 
         // Toggle dropdown menu
-        profileDropdown.addEventListener('click', function() {
+        profileDropdown.addEventListener('click', function () {
             dropdownMenu.classList.toggle('hidden');
         });
 
         // Close dropdown when clicking outside
-        document.addEventListener('click', function(event) {
+        document.addEventListener('click', function (event) {
             if (!profileDropdown.contains(event.target)) {
                 dropdownMenu.classList.add('hidden');
             }
         });
 
         // Handle sign out
-        signOutButton.addEventListener('click', function(e) {
+        signOutButton.addEventListener('click', function (e) {
             e.preventDefault();
             localStorage.removeItem('isLoggedIn');
             localStorage.removeItem('userEmail');
             window.location.href = 'login.html';
         });
     });
-    
-    // Menu Toggle
-    const menuButton = document.getElementById('menuButton');
-    const menuDropdown = document.getElementById('menuDropdown');
-    
-    menuButton.addEventListener('click', function(e) {
-        e.stopPropagation();
-        menuDropdown.classList.toggle('hidden');
-    });
 
-    // Menutup dropdown ketika mengklik di luar menu
-    document.addEventListener('click', function(event) {
-        if (!menuButton.contains(event.target)) {
-            menuDropdown.classList.add('hidden');
-        }
-    });
+     const menuButton = document.getElementById('menuButton');
+  const menuDropdown = document.getElementById('menuDropdown');
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
 
-    // Menutup dropdown ketika mengklik link di dalamnya
-    menuDropdown.addEventListener('click', function() {
-        menuDropdown.classList.add('hidden');
-    });
+  // Toggle dropdown menu
+  menuButton.addEventListener('click', function (e) {
+    e.stopPropagation();
+    menuDropdown.classList.toggle('hidden');
+  });
 
-    // Hamburger Menu Toggle
-    const hamburgerBtn = document.getElementById('hamburgerBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    
-    hamburgerBtn.addEventListener('click', function() {
-        mobileMenu.classList.toggle('hidden');
-        // Mengubah ikon hamburger
-        const icon = hamburgerBtn.querySelector('i');
-        if (mobileMenu.classList.contains('hidden')) {
-            icon.classList.remove('fa-times');
-            icon.classList.add('fa-bars');
-        } else {
-            icon.classList.remove('fa-bars');
-            icon.classList.add('fa-times');
-        }
-    });
+  // Tutup dropdown jika klik di luar
+  document.addEventListener('click', function (event) {
+    if (!menuButton.contains(event.target)) {
+      menuDropdown.classList.add('hidden');
+    }
+  });
 
-    // Menutup mobile menu ketika mengklik link
-    document.querySelectorAll('#mobileMenu a').forEach(link => {
-        link.addEventListener('click', () => {
-            mobileMenu.classList.add('hidden');
-            const icon = hamburgerBtn.querySelector('i');
-            icon.classList.remove('fa-times');
-            icon.classList.add('fa-bars');
-        });
-    });
+  menuDropdown.addEventListener('click', function () {
+    menuDropdown.classList.add('hidden');
+  });
+
+  // Toggle hamburger menu
+  hamburgerBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+  });
 </script>
