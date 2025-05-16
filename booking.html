@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,56 +10,151 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         body {
-            background-color: #fde2f3; /* Light Pink Background */
+            background-color: #fde2f3;
+            /* Light Pink Background */
         }
+
         .navbar-bg {
-            background-color: #1a1a1a; /* Dark/Black Navbar */
+            background-color: #1a1a1a;
+            /* Dark/Black Navbar */
         }
+
         .button-pink {
-            background-color: #f72585; /* Hot Pink Button */
+            background-color: #f72585;
+            /* Hot Pink Button */
             color: white;
         }
+
         .button-pink:hover {
-            background-color: #d01f6d; /* Darker Pink on Hover */
+            background-color: #d01f6d;
+            /* Darker Pink on Hover */
         }
+
         .card-bg {
-            background-color: #ffffff; /* White Card Background */
+            background-color: #ffffff;
+            /* White Card Background */
         }
+
         .text-pink-accent {
-            color: #f72585; /* Hot Pink for Accents */
+            color: #f72585;
+            /* Hot Pink for Accents */
         }
+
         .input-field {
-            border: 1px solid #cbd5e1; /* border-gray-300 */
-            padding: 0.75rem; /* p-3 */
-            border-radius: 0.375rem; /* rounded-md */
+            border: 1px solid #cbd5e1;
+            /* border-gray-300 */
+            padding: 0.75rem;
+            /* p-3 */
+            border-radius: 0.375rem;
+            /* rounded-md */
             width: 100%;
         }
+
         .input-field:focus {
-            border-color: #f72585; /* focus:border-pink-500 */
-            box-shadow: 0 0 0 3px rgba(247, 37, 133, 0.3); /* focus:ring-pink-500 with opacity */
+            border-color: #f72585;
+            /* focus:border-pink-500 */
+            box-shadow: 0 0 0 3px rgba(247, 37, 133, 0.3);
+            /* focus:ring-pink-500 with opacity */
             outline: none;
         }
+
         .booking-hero-bg {
-            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('assets/images/background.jpeg'); /* Ganti dengan path gambar lokal Anda */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('assets/images/background.jpeg');
+            /* Ganti dengan path gambar lokal Anda */
             background-size: cover;
             background-position: center;
         }
+
+        .hamburger-line {
+            width: 24px;
+            height: 3px;
+            background-color: white;
+            transition: all 0.3s ease-in-out;
+            position: relative;
+        }
+
+        .hamburger-line::before,
+        .hamburger-line::after {
+            content: '';
+            position: absolute;
+            width: 24px;
+            height: 3px;
+            background-color: white;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .hamburger-line::before {
+            transform: translateY(-8px);
+        }
+
+        .hamburger-line::after {
+            transform: translateY(8px);
+        }
+
+        .hamburger-active .hamburger-line {
+            background-color: transparent;
+        }
+
+        .hamburger-active .hamburger-line::before {
+            transform: rotate(45deg);
+        }
+
+        .hamburger-active .hamburger-line::after {
+            transform: rotate(-45deg);
+        }
+
+        #mobileMenu {
+            transform: translateY(-100%);
+            transition: all 0.3s ease-in-out;
+            opacity: 0;
+        }
+
+        #mobileMenu.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
     </style>
 </head>
+
 <body class="bg-body"> <!-- Changed from bg-gray-100 to use custom style -->
     <!-- Navbar -->
-    <nav class="navbar-bg p-4 sticky top-0 z-50 shadow-lg">
+    <nav class="navbar-bg p-4 sticky top-0 z-50 shadow-lg bg-blue-700">
         <div class="container mx-auto flex justify-between items-center">
-            <a href="index.html" class="text-white text-2xl font-bold">PS RENTAL ZONE</a>
-            <div class="space-x-4">
+            <!-- Logo -->
+            <a href="index.html" class="text-white text-2xl font-bold flex items-center">
+                <img src="assets/images/logo.png" alt="PS Rental Zone Logo" class="h-10 mr-2" />
+                PS Rental Zone
+            </a>
+
+            <!-- Tombol Hamburger untuk Mobile -->
+            <button id="hamburgerBtn" class="md:hidden text-white focus:outline-none p-2">
+                <div class="hamburger-line"></div>
+            </button>
+
+            <!-- Menu Desktop -->
+            <div class="hidden md:flex items-center space-x-6">
+                <!-- Menu Tautan -->
                 <a href="index.html#home" class="text-white hover:text-pink-300">Beranda</a>
                 <a href="index.html#about" class="text-white hover:text-pink-300">Tentang Kami</a>
                 <a href="index.html#services" class="text-white hover:text-pink-300">Layanan</a>
-                <a href="booking.html" class="text-white hover:text-pink-300 font-semibold border-b-2 border-pink-500">Pesan</a>
+                <a href="booking.html"
+                    class="text-white hover:text-pink-300 font-semibold border-b-2 border-pink-500">Pesan</a>
                 <a href="jadwal_ruangan.html" class="text-white hover:text-pink-300">Jadwal</a>
                 <a href="vip_room.html" class="text-white hover:text-pink-300">Catalog</a>
                 <a href="index.html#contact" class="text-white hover:text-pink-300">Kontak</a>
             </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden px-4 pt-4 pb-2 space-y-2 text-white" id="mobileMenu">
+            <a href="index.html#home" class="block hover:text-pink-300">Beranda</a>
+            <a href="index.html#about" class="block hover:text-pink-300">Tentang Kami
+            </a>
+            <a href="index.html#services" class="block hover:text-pink-300">Layanan</a>
+            <a href="booking.html" class="block hover:text-pink-300">Pesan</a>
+            <a href="jadwal_ruangan.html" class="block hover:text-pink-300">Jadwal</a>
+            <a href="vip_room.html" class="block hover:text-pink-300">Catalog</a>
+            <a href="index.html#contact" class="block hover:text-pink-300">Kontak</a>
         </div>
     </nav>
 
@@ -77,16 +173,19 @@
             <form id="bookingForm" class="space-y-6">
                 <div>
                     <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Nama Lengkap</label>
-                    <input type="text" id="name" name="name" class="input-field" placeholder="Masukkan nama Anda" required>
+                    <input type="text" id="name" name="name" class="input-field" placeholder="Masukkan nama Anda"
+                        required>
                 </div>
 
                 <div>
                     <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Nomor Telepon</label>
-                    <input type="tel" id="phone" name="phone" class="input-field" placeholder="Contoh: 081234567890" required>
+                    <input type="tel" id="phone" name="phone" class="input-field" placeholder="Contoh: 081234567890"
+                        required>
                 </div>
 
                 <div>
-                    <label for="room_type" class="block text-sm font-medium text-gray-700 mb-1">Pilih Tipe Ruangan</label>
+                    <label for="room_type" class="block text-sm font-medium text-gray-700 mb-1">Pilih Tipe
+                        Ruangan</label>
                     <select id="room_type" name="room_type" class="input-field" required>
                         <option value="" disabled selected>-- Pilih Ruangan --</option>
                         <option value="standard_ps4">Ruangan Standard PS4</option>
@@ -99,7 +198,8 @@
 
                 <div class="grid md:grid-cols-2 gap-6">
                     <div>
-                        <label for="booking_date" class="block text-sm font-medium text-gray-700 mb-1">Tanggal Pemesanan</label>
+                        <label for="booking_date" class="block text-sm font-medium text-gray-700 mb-1">Tanggal
+                            Pemesanan</label>
                         <input type="date" id="booking_date" name="booking_date" class="input-field" required>
                     </div>
                     <div>
@@ -110,16 +210,20 @@
 
                 <div>
                     <label for="duration" class="block text-sm font-medium text-gray-700 mb-1">Durasi (jam)</label>
-                    <input type="number" id="duration" name="duration" class="input-field" placeholder="Minimal 1 jam" min="1" value="1" required>
+                    <input type="number" id="duration" name="duration" class="input-field" placeholder="Minimal 1 jam"
+                        min="1" value="1" required>
                 </div>
 
                 <div>
-                    <label for="notes" class="block text-sm font-medium text-gray-700 mb-1">Catatan Tambahan (Opsional)</label>
-                    <textarea id="notes" name="notes" rows="3" class="input-field" placeholder="Permintaan khusus atau informasi lainnya..."></textarea>
+                    <label for="notes" class="block text-sm font-medium text-gray-700 mb-1">Catatan Tambahan
+                        (Opsional)</label>
+                    <textarea id="notes" name="notes" rows="3" class="input-field"
+                        placeholder="Permintaan khusus atau informasi lainnya..."></textarea>
                 </div>
 
                 <div class="pt-4">
-                    <button type="submit" class="button-pink w-full px-8 py-4 rounded-full text-xl font-semibold transition-transform transform hover:scale-105">
+                    <button type="submit"
+                        class="button-pink w-full px-8 py-4 rounded-full text-xl font-semibold transition-transform transform hover:scale-105">
                         <i class="fas fa-calendar-check mr-2"></i>Pesan Sekarang
                     </button>
                 </div>
@@ -156,9 +260,9 @@
             <p>&copy; 2054 PS Zone. All rights reserved.</p>
         </div>
     </footer>
-   
+
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const bookingForm = document.getElementById('bookingForm');
             const bookedRoomsListDiv = document.getElementById('bookedRoomsList'); // Tambahkan ini
 
@@ -192,9 +296,9 @@
             }
 
             if (bookingForm) {
-                bookingForm.addEventListener('submit', function(event) {
+                bookingForm.addEventListener('submit', function (event) {
                     event.preventDefault();
-                    
+
                     const name = document.getElementById('name').value;
                     const phone = document.getElementById('phone').value;
                     const roomTypeSelect = document.getElementById('room_type'); // Ambil elemen select
@@ -219,7 +323,7 @@
                         date: bookingDate,
                         time: bookingTime,
                         duration: duration,
-                        notes: notes 
+                        notes: notes
                     };
 
                     saveBooking(bookingDetails); // Simpan pemesanan
@@ -261,6 +365,34 @@
             // Tampilkan ruangan yang sudah dipesan saat halaman dimuat
             displayBookedRooms(); // Tambahkan ini
         });
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        // Toggle hamburger menu
+        // Update bagian hamburger menu toggle
+        hamburgerBtn.addEventListener('click', () => {
+            hamburgerBtn.classList.toggle('hamburger-active');
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('show');
+        });
+
+        // Tambahkan event listener untuk menutup menu saat mengklik di luar
+        document.addEventListener('click', (event) => {
+            if (!hamburgerBtn.contains(event.target) && !mobileMenu.contains(event.target)) {
+                hamburgerBtn.classList.remove('hamburger-active');
+                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('show');
+            }
+        });
+
+        // Menutup menu saat mengklik link
+        document.querySelectorAll('#mobileMenu a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburgerBtn.classList.remove('hamburger-active');
+                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('show');
+            });
+        });
     </script>
 </body>
+
 </html>
