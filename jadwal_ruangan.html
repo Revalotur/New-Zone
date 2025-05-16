@@ -68,6 +68,7 @@
             animation: gamepadWiggle 1s ease-in-out infinite;
             color: #f72585;
         }
+
         @keyframes gamepadWiggle {
             0% {
                 transform: rotate(0deg) scale(1);
@@ -84,6 +85,19 @@
             100% {
                 transform: rotate(0deg) scale(1);
             }
+        }
+
+        #mobileMenu {
+            transform: translateY(-20px);
+            transition: all 0.3s ease-in-out;
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        #mobileMenu.show {
+            transform: translateY(0);
+            opacity: 1;
+            visibility: visible;
         }
     </style>
 </head>
@@ -162,7 +176,7 @@
                         <!-- Headers untuk 24 jam -->
                         <script>
                             for (let i = 0; i < 24; i++) {
-                                document.write(<th>${String(i).padStart(2, '0')}:00</th>);
+                                document.write(`<th>${String(i).padStart(2, '0')}:00</th>`);
                             }
                         </script>
                     </tr>
@@ -235,9 +249,9 @@
 
                             if (bookingFound) {
                                 cellClass = 'slot-booked';
-                                cellContent = <strong>${bookingFound.name}</strong>;
+                                cellContent = `<strong>${bookingFound.name}</strong>`;
                             }
-                            tableHtml += <td class="${cellClass}">${cellContent}</td>;
+                            tableHtml += `<td class="${cellClass}">${cellContent}</td>`;
                         }
                         tableHtml += `</tr>`;
                     });
