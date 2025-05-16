@@ -184,13 +184,28 @@
         <!-- Mobile Menu -->
         <div class="md:hidden hidden px-4 pt-4 pb-2 space-y-2 text-white" id="mobileMenu">
             <a href="#home" class="block hover:text-pink-300">Beranda</a>
-            <a href="#about" class="block hover:text-pink-300">Tentang Kami
-            </a>
+            <a href="#about" class="block hover:text-pink-300">Tentang Kami</a>
             <a href="#services" class="block hover:text-pink-300">Layanan</a>
             <a href="booking.html" class="block hover:text-pink-300">Pesan</a>
             <a href="jadwal_ruangan.html" class="block hover:text-pink-300">Jadwal</a>
             <a href="vip_room.html" class="block hover:text-pink-300">Catalog</a>
             <a href="#contact" class="block hover:text-pink-300">Kontak</a>
+            
+            <!-- Tambahkan Profile Section untuk Mobile -->
+            <div id="mobileProfileSection" class="hidden border-t border-gray-600 mt-2 pt-2">
+                <div class="flex items-center space-x-2 text-white">
+                    <i class="fas fa-user-circle text-2xl"></i>
+                    <span id="mobileUserNameDisplay" class="text-sm"></span>
+                </div>
+                <a href="#" class="block hover:text-pink-300 mt-2">Profil Saya</a>
+                <a href="#" class="block hover:text-pink-300">Riwayat</a>
+                <a href="#" id="mobileSignOutButton" class="block text-red-400 hover:text-red-300 mt-2">Keluar</a>
+            </div>
+
+            <!-- Tombol Login untuk Mobile -->
+            <a href="login.html" id="mobileLoginButton" class="block hover:text-pink-300 border-t border-gray-600 mt-2 pt-2">
+                <i class="fas fa-sign-in-alt mr-2"></i>Login
+            </a>
         </div>
     </nav>
 
