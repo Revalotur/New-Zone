@@ -117,11 +117,15 @@
 
             const showSuccessAlert = () => {
                 Swal.fire({
-                    icon: 'success',
                     title: 'Registrasi Berhasil!',
-                    text: 'Silakan login untuk melanjutkan',
-                    confirmButtonColor: '#f72585',
-                    iconColor: '#1a1a1a'
+                        text: 'Silahkan Lanjut Ke Login Untuk Melanjutkan',
+                        icon: 'success',
+                        showConfirmButton: false,
+                        timer: 1500,
+                        background: '#fff',
+                        customClass: {
+                            popup: 'animated bounceIn'
+                        }
                 }).then(() => {
                     window.location.href = 'login.html';
                 });

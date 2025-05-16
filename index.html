@@ -96,6 +96,11 @@
                 PS Rental Zone
             </a>
             
+            <!-- Hamburger Menu untuk Mobile -->
+            <button id="hamburgerBtn" class="md:hidden text-white focus:outline-none">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+            
             <!-- Menu Desktop -->
             <div class="hidden md:flex items-center space-x-6">
                 <div class="relative">
@@ -143,15 +148,15 @@
     </nav>
 
     <!-- Mobile Menu Dropdown -->
-    <div class="hidden md:hidden" id="mobileMenu">
-        <div class="px-2 pt-2 pb-3 space-y-1">
-            <a href="#home" class="block px-3 py-2 text-white hover:bg-pink-700">Beranda</a>
-            <a href="#about" class="block px-3 py-2 text-white hover:bg-pink-700">Tentang Kami</a>
-            <a href="#services" class="block px-3 py-2 text-white hover:bg-pink-700">Layanan</a>
-            <a href="booking.html" class="block px-3 py-2 text-white hover:bg-pink-700">Pesan Ruangan</a>
-            <a href="jadwal_ruangan.html" class="block px-3 py-2 text-white hover:bg-pink-700">Jadwal</a>
-            <a href="vip_room.html" class="block px-3 py-2 text-white hover:bg-pink-700">VIP Access</a>
-            <a href="#contact" class="block px-3 py-2 text-white hover:bg-pink-700">Kontak</a>
+    <div id="mobileMenu" class="hidden bg-black bg-opacity-90 fixed top-16 left-0 w-full h-screen z-40 transition-all duration-300 ease-in-out">
+        <div class="px-4 py-6 space-y-4">
+            <a href="#home" class="block px-4 py-3 text-white hover:bg-pink-700 rounded-lg transition-colors duration-200">Beranda</a>
+            <a href="#about" class="block px-4 py-3 text-white hover:bg-pink-700 rounded-lg transition-colors duration-200">Tentang Kami</a>
+            <a href="#services" class="block px-4 py-3 text-white hover:bg-pink-700 rounded-lg transition-colors duration-200">Layanan</a>
+            <a href="booking.html" class="block px-4 py-3 text-white hover:bg-pink-700 rounded-lg transition-colors duration-200">Pesan Ruangan</a>
+            <a href="jadwal_ruangan.html" class="block px-4 py-3 text-white hover:bg-pink-700 rounded-lg transition-colors duration-200">Jadwal</a>
+            <a href="vip_room.html" class="block px-4 py-3 text-white hover:bg-pink-700 rounded-lg transition-colors duration-200">VIP Access</a>
+            <a href="#contact" class="block px-4 py-3 text-white hover:bg-pink-700 rounded-lg transition-colors duration-200">Kontak</a>
         </div>
     </div>
 </nav>
@@ -316,5 +321,32 @@
     // Menutup dropdown ketika mengklik link di dalamnya
     menuDropdown.addEventListener('click', function() {
         menuDropdown.classList.add('hidden');
+    });
+
+    // Hamburger Menu Toggle
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    hamburgerBtn.addEventListener('click', function() {
+        mobileMenu.classList.toggle('hidden');
+        // Mengubah ikon hamburger
+        const icon = hamburgerBtn.querySelector('i');
+        if (mobileMenu.classList.contains('hidden')) {
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+        } else {
+            icon.classList.remove('fa-bars');
+            icon.classList.add('fa-times');
+        }
+    });
+
+    // Menutup mobile menu ketika mengklik link
+    document.querySelectorAll('#mobileMenu a').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+            const icon = hamburgerBtn.querySelector('i');
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+        });
     });
 </script>
