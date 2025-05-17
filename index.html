@@ -197,6 +197,11 @@
                 <a href="jadwal_ruangan.html" class="text-white hover:text-pink-300">Jadwal</a>
                 <a href="vip_room.html" class="text-white hover:text-pink-300">Catalog</a>
 
+                <!-- Tambahkan WhatsApp Link di sini -->
+                <a href="https://wa.me/628001234567" target="_blank" class="text-white hover:text-green-400 transition-colors duration-300">
+                    <i class="fab fa-whatsapp text-2xl"></i>
+                </a>
+
                 <!-- Profile Section -->
                 <div id="profileSection" class="hidden relative">
                     <button id="profileDropdown" class="flex items-center space-x-2 text-white hover:text-pink-300">
@@ -223,31 +228,52 @@
         </div>
 
         <!-- Mobile Menu -->
-        <div class="md:hidden hidden px-4 pt-4 pb-2 space-y-2 text-white" id="mobileMenu">
-            <div class="px-4 py-6 space-y-4">
-            <a href="#home" class="block hover:text-pink-300">Beranda</a>
-            <a href="#about" class="block hover:text-pink-300">Tentang Kami</a>
-            <a href="#services" class="block hover:text-pink-300">Layanan</a>
-            <a href="booking.html" class="block hover:text-pink-300">Pesan</a>
-            <a href="jadwal_ruangan.html" class="block hover:text-pink-300">Jadwal</a>
-            <a href="vip_room.html" class="block hover:text-pink-300">Catalog</a>
-            <a href="#contact" class="block hover:text-pink-300">Kontak</a>
-            
-            <!-- Tambahkan Profile Section untuk Mobile -->
-            <div id="mobileProfileSection" class="hidden border-t border-gray-600 mt-2 pt-2">
-                <div class="flex items-center space-x-2 text-white">
-                    <i class="fas fa-user-circle text-2xl"></i>
-                    <span id="mobileUserEmailDisplay" class="text-sm"></span>
+        <div class="md:hidden hidden px-4 pt-2 pb-4" id="mobileMenu">
+            <div class="space-y-2">
+                <!-- Menu Utama -->
+                <div class="space-y-1">
+                    <a href="#home" class="block py-2 px-4 text-white hover:text-pink-300">Beranda</a>
+                    <a href="#about" class="block py-2 px-4 text-white hover:text-pink-300">Tentang Kami</a>
+                    <a href="#services" class="block py-2 px-4 text-white hover:text-pink-300">Layanan</a>
+                    <a href="booking.html" class="block py-2 px-4 text-white hover:text-pink-300">Pesan</a>
+                    <a href="jadwal_ruangan.html" class="block py-2 px-4 text-white hover:text-pink-300">Jadwal</a>
+                    <a href="vip_room.html" class="block py-2 px-4 text-white hover:text-pink-300">Catalog</a>
+                    <a href="#contact" class="block py-2 px-4 text-white hover:text-pink-300">Kontak</a>
                 </div>
-                <a href="#" class="block hover:text-pink-300 mt-2">Profil Saya</a>
-                <a href="#" class="block hover:text-pink-300">Riwayat</a>
-                <a href="login.html" id="mobileSignOutButton" class="block text-red-400 hover:text-red-300 mt-2">Keluar</a>
-            </div>
 
-            <!-- Tombol Login untuk Mobile -->
-            <a href="login.html" id="mobileLoginButton" class="block hover:text-pink-300 border-t border-gray-600 mt-2 pt-2">
-                <i class="fas fa-sign-in-alt mr-2"></i>Login
-            </a>
+                <!-- Divider -->
+                <div class="border-t border-gray-700 my-2"></div>
+
+                <!-- Customer Service -->
+                <div class="py-2">
+                    <a href="https://wa.me/628001234567" target="_blank" 
+                       class="flex items-center space-x-3 text-white hover:text-green-400 transition-colors duration-300">
+                        <i class="fab fa-whatsapp text-2xl"></i>
+                        <span>CS </span>
+                    </a>
+                </div>
+
+                <!-- Divider -->
+                <div class="border-t border-gray-700 my-2"></div>
+
+                <!-- Profile Section untuk Mobile -->
+                <div id="mobileProfileSection" class="hidden">
+                    <div class="flex items-center space-x-2 text-white py-2">
+                        <i class="fas fa-user-circle text-2xl"></i>
+                        <span id="mobileUserEmailDisplay" class="text-sm"></span>
+                    </div>
+                    <div class="space-y-1">
+                        <a href="#" class="block py-2 px-4 text-white hover:text-pink-300">Profil Saya</a>
+                        <a href="#" class="block py-2 px-4 text-white hover:text-pink-300">Riwayat</a>
+                        <a href="login.html" id="mobileSignOutButton" class="block py-2 px-4 text-red-400 hover:text-red-300">Keluar</a>
+                    </div>
+                </div>
+
+                <!-- Tombol Login untuk Mobile -->
+                <a href="login.html" id="mobileLoginButton" class="block py-2 px-4 text-white hover:text-pink-300">
+                    <i class="fas fa-sign-in-alt mr-2"></i>Login
+                </a>
+            </div>
         </div>
     </div>
     </nav>
@@ -337,6 +363,68 @@
     </section>
 
 
+    <!-- Review Section -->
+    <section id="reviews" class="bg-white py-20 px-4">
+        <div class="container mx-auto">
+            <h2 class="section-title text-black-accent">Ulasan Pelanggan</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Review Card 1 -->
+                <div class="p-6 card-bg rounded-lg shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <img src="https://i.pravatar.cc/60?img=1" alt="User" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold text-gray-800">Andi Pratama</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Tempat yang keren banget! Fasilitas lengkap, ruangan nyaman, dan pelayanannya ramah. Recommended buat yang mau main PS bareng temen-temen!"</p>
+                </div>
+
+                <!-- Review Card 2 -->
+                <div class="p-6 card-bg rounded-lg shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <img src="https://i.pravatar.cc/60?img=2" alt="User" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold text-gray-800">Siti Rahma</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"VIP Room-nya super cozy! Perfect buat quality time sama keluarga. Game-gamenya update terus, jadi ga pernah bosan main di sini."</p>
+                </div>
+
+                <!-- Review Card 3 -->
+                <div class="p-6 card-bg rounded-lg shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <img src="https://i.pravatar.cc/60?img=3" alt="User" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold text-gray-800">Budi Santoso</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Mantap! Koleksi gamenya lengkap, PS5-nya banyak, dan harganya worth it banget. Pasti bakal balik lagi!"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact Section -->
     <div id="contact" class="bg-black text-white py-16">
         <div class="container mx-auto px-4">
@@ -360,6 +448,8 @@
             </div>
         </div>
     </div>
+
+    <!-- Hapus section customer service lama -->
 
     <!-- Footer -->
     <footer class="bg-gray-900 text-white py-8">
