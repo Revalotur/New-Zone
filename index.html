@@ -139,6 +139,18 @@
                 transform: rotate(0deg) scale(1);
             }
         }
+            #mobileMenu {
+                transform: translateY(-20px);
+                transition: all 0.3s ease-in-out;
+                opacity: 0;
+                visibility: hidden;
+            }
+            
+            #mobileMenu.show {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
     </style>
 </head>
 
