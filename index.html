@@ -8,7 +8,6 @@
     <link rel="icon" type="image/png" href="assets/images/logo.png">
     <link href="src/output.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
     <style>
         body {
             background-color: #fde2f3;
@@ -113,47 +112,54 @@
             opacity: 0;
             animation: fadeInUp 1s 0.5s ease-out forwards;
         }
-        /* Ganti style hamburger yang lama dengan yang baru */
-        .hamburger-icon {
-            transition: all 0.5s ease-in-out;
-            transform-origin: center;
-        }
-        
-        .hamburger-active .hamburger-icon {
-            animation: gamepadWiggle 1s ease-in-out infinite;
-            color: #f72585;
-        }
+    .hamburger-line {
+    width: 24px;
+    height: 3px;
+    background-color: white;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+}
 
-        @keyframes gamepadWiggle {
-            0% {
-                transform: rotate(0deg) scale(1);
-            }
-            25% {
-                transform: rotate(-15deg) scale(1.2);
-            }
-            50% {
-                transform: rotate(0deg) scale(1);
-            }
-            75% {
-                transform: rotate(15deg) scale(1.2);
-            }
-            100% {
-                transform: rotate(0deg) scale(1);
-            }
-        }
+    .hamburger-line::before,
+    .hamburger-line::after {
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 3px;
+    background-color: white;
+    transition: all 0.3s ease-in-out;
+}
 
-        #mobileMenu {
-            transform: translateY(-20px);
-            transition: all 0.3s ease-in-out;
-            opacity: 0;
-            visibility: hidden;
-        }
-        
-        #mobileMenu.show {
-            transform: translateY(0);
-            opacity: 1;
-            visibility: visible;
-        }
+    .hamburger-line::before {
+    transform: translateY(-8px);
+}
+
+    .hamburger-line::after {
+    transform: translateY(8px);
+}
+
+    .hamburger-active .hamburger-line {
+    background-color: transparent;
+}
+
+    .hamburger-active .hamburger-line::before {
+    transform: rotate(45deg);
+}
+
+    .hamburger-active .hamburger-line::after {
+    transform: rotate(-45deg);
+}
+
+    #mobileMenu {
+    transform: translateY(-100%);
+    transition: all 0.3s ease-in-out;
+    opacity: 0;
+}
+
+    #mobileMenu.show {
+    transform: translateY(0);
+    opacity: 1;
+}
     </style>
 </head>
 
@@ -168,9 +174,9 @@
             </a>
 
             <!-- Tombol Hamburger untuk Mobile -->
-            <button id="hamburgerBtn" class="md:hidden text-white focus:outline-none p-2 flex items-center">
-                <i class="ri-gamepad-line text-2xl hamburger-icon"></i>
-            </button>
+            <!-- Ganti tombol hamburger yang lama dengan yang baru -->
+            <button id="hamburgerBtn" class="md:hidden text-white focus:outline-none p-2">
+                <div class="hamburger-line"></div>
             </button>
 
             <!-- Menu Desktop -->
@@ -413,18 +419,8 @@
 
         // Hamburger menu toggle
         hamburgerBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
+            e.stopPropagation(); // Mencegah event bubbling
             hamburgerBtn.classList.toggle('hamburger-active');
-            const icon = hamburgerBtn.querySelector('.hamburger-icon');
-            
-            if (hamburgerBtn.classList.contains('hamburger-active')) {
-                icon.classList.remove('ri-gamepad-line');
-                icon.classList.add('ri-gamepad-fill');
-            } else {
-                icon.classList.remove('ri-gamepad-fill');
-                icon.classList.add('ri-gamepad-line');
-            }
-            
             mobileMenu.classList.toggle('hidden');
             mobileMenu.classList.toggle('show');
         });
@@ -459,5 +455,5 @@
                 mobileMenu.classList.remove('show');
             });
         });
-    });
+    });
 </script>
