@@ -113,15 +113,27 @@
             opacity: 0;
             animation: fadeInUp 1s 0.5s ease-out forwards;
         }
+        /* Ganti style hamburger yang ada dengan yang baru */
         .hamburger-icon {
             transition: all 0.5s ease-in-out;
             transform-origin: center;
+            animation: menuBounce 2s infinite;
         }
         
         .hamburger-active .hamburger-icon {
             animation: gamepadWiggle 1s ease-in-out infinite;
             color: #f72585;
         }
+        
+        @keyframes menuBounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-5px);
+            }
+        }
+        
         @keyframes gamepadWiggle {
             0% {
                 transform: rotate(0deg) scale(1);
