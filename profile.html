@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - PS Zone</title>
+    <link rel="icon" type="image/png" href="assets/images/logo.png">
+    <link href="src/output.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #fde2f3; }
+        .profile-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .profile-header {
+            background: white;
+            border-radius: 15px 15px 0 0;
+            padding: 2rem;
+            text-align: center;
+        }
+        .profile-avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto;
+            background: #f0f0f0;
+            overflow: hidden;
+        }
+        .social-links a {
+            color: #666;
+            transition: color 0.3s;
+        }
+        .social-links a:hover {
+            color: #f72585;
+        }
+        .project-status {
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .project-progress {
+            height: 100%;
+            background: #2196f3;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-pink-100 min-h-screen py-8">
+    <div class="container mx-auto px-4">
+        <!-- Breadcrumb -->
+        <div class="text-sm mb-8">
+            <a href="index.html" class="text-gray-600 hover:text-pink-500">Home</a>
+            <span class="mx-2 text-gray-400">/</span>
+            <span class="text-gray-800">Profile</span>
+        </div>
+
+        <div class="grid md:grid-cols-12 gap-8">
+            <!-- Profile Card -->
+            <div class="md:col-span-4">
+                <div class="profile-card p-6">
+                    <div class="profile-header">
+                        <div class="profile-avatar mb-4 relative group">
+                            <img id="profileImage" src="assets/images/fab.jpg" alt="Profile Picture" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity cursor-pointer">
+                                <label for="imageUpload" class="text-white cursor-pointer">
+                                    <i class="fas fa-camera text-2xl"></i>
+                                </label>
+                                <input type="file" id="imageUpload" class="hidden" accept="image/*">
+                            </div>
+                        </div>
+                        <h1 class="text-2xl font-bold mb-2" id="profileName" contenteditable="true">Nama Lengkap</h1>
+                        <p class="text-gray-600 mb-4" id="profileRole" contenteditable="true">Gamer Enthusiast</p>
+                        <div class="flex justify-center space-x-2">
+                        </div>
+                    </div>
+
+                    <!-- Social Links -->
+                    <div class="social-links mt-6 space-y-3">
+                        <div class="flex items-center space-x-3 p-2 hover:bg-gray-50 rounded">
+                            <i class="fas fa-globe w-6"></i>
+                            <span class="text-gray-600" contenteditable="true">website.com</span>
+                        </div>
+                        <div class="flex items-center space-x-3 p-2 hover:bg-gray-50 rounded">
+                            <i class="fab fa-github w-6"></i>
+                            <span class="text-gray-600" contenteditable="true">github.com/username</span>
+                        </div>
+                        <div class="flex items-center space-x-3 p-2 hover:bg-gray-50 rounded">
+                            <i class="fab fa-twitter w-6"></i>
+                            <span class="text-gray-600" contenteditable="true">@username</span>
+                        </div>
+                        <div class="flex items-center space-x-3 p-2 hover:bg-gray-50 rounded">
+                            <i class="fab fa-instagram w-6"></i>
+                            <span class="text-gray-600" contenteditable="true">@username</span>
+                        </div>
+                        <div class="flex items-center space-x-3 p-2 hover:bg-gray-50 rounded">
+                            <i class="fab fa-facebook w-6"></i>
+                            <span class="text-gray-600" contenteditable="true">username</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile Info & Projects -->
+            <div class="md:col-span-8 space-y-8">
+                <!-- Profile Information -->
+                <div class="profile-card p-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-xl font-bold">Informasi Profil</h2>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <h3 class="text-gray-500 text-sm">Nama Lengkap</h3>
+                            <p class="text-gray-800" contenteditable="true" id="fullName">Nama User</p>
+                        </div>
+                        <div>
+                            <h3 class="text-gray-500 text-sm">Email</h3>
+                            <p class="text-gray-800" contenteditable="true" id="email">user@example.com</p>
+                        </div>
+                        <div>
+                            <h3 class="text-gray-500 text-sm">No. Telepon</h3>
+                            <p class="text-gray-800" contenteditable="true" id="phone">(239) 816-9029</p>
+                        </div>
+                        <div>
+                            <h3 class="text-gray-500 text-sm">Mobile</h3>
+                            <p class="text-gray-800" contenteditable="true" id="mobile">(320) 380-4539</p>
+                        </div>
+                        <div class="md:col-span-2">
+                            <h3 class="text-gray-500 text-sm">Alamat</h3>
+                            <p class="text-gray-800" contenteditable="true" id="address">Alamat User</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gaming Progress -->
+                <div class="profile-card p-6">
+                    <h2 class="text-xl font-bold mb-6">Gaming Progress</h2>
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-gray-600">Game Completion</span>
+                                <span class="text-blue-500">90%</span>
+                            </div>
+                            <div class="project-status">
+                                <div class="project-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-gray-600">Achievement Progress</span>
+                                <span class="text-blue-500">75%</span>
+                            </div>
+                            <div class="project-status">
+                                <div class="project-progress" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-gray-600">Multiplayer Rank</span>
+                                <span class="text-blue-500">85%</span>
+                            </div>
+                            <div class="project-status">
+                                <div class="project-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Handle image upload
+        document.getElementById('imageUpload').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('profileImage').src = e.target.result;
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Save changes when user clicks outside editable elements
+        document.addEventListener('blur', function(e) {
+            if (e.target.hasAttribute('contenteditable')) {
+                // Here you can add code to save the changes to localStorage or your backend
+                if (e.target.id === 'fullName') {
+                    document.getElementById('profileName').textContent = e.target.textContent;
+                }
+            }
+        }, true);
+    </script>
+</body>
+</html>
