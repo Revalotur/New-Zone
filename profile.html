@@ -13,20 +13,35 @@
             background: white;
             border-radius: 15px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1rem;
         }
         .profile-header {
             background: white;
             border-radius: 15px 15px 0 0;
-            padding: 2rem;
+            padding: 1.5rem;
             text-align: center;
         }
+        @media (min-width: 768px) {
+            .profile-header {
+                padding: 2rem;
+            }
+            .profile-card {
+                margin-bottom: 0;
+            }
+        }
         .profile-avatar {
-            width: 150px;
-            height: 150px;
+            width: 120px; /* Ukuran lebih kecil untuk mobile */
+            height: 120px;
             border-radius: 50%;
             margin: 0 auto;
             background: #f0f0f0;
             overflow: hidden;
+        }
+        @media (min-width: 768px) {
+            .profile-avatar {
+                width: 150px; /* Ukuran lebih besar untuk desktop */
+                height: 150px;
+            }
         }
         .social-links a {
             color: #666;
@@ -46,24 +61,91 @@
             background: #2196f3;
             border-radius: 4px;
         }
+        .back-button {
+            background-color: #f72585;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        .back-button:hover {
+            background-color: #b5179e;
+            transform: translateY(-2px);
+        }
+        /* Mobile Navigation Styles */
+        .mobile-nav-link {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            color: #ffffff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .mobile-nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        .mobile-nav-link i {
+            width: 24px;
+            margin-right: 12px;
+        }
+        .mobile-nav-link.active {
+            background-color: #f72585;
+        }
+        @media (max-width: 768px) {
+            .mobile-nav {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background-color: #1a1a1a;
+                padding: 0.5rem;
+                display: flex;
+                justify-content: space-around;
+                z-index: 1000;
+            }
+            .mobile-nav-item {
+                text-align: center;
+                flex: 1;
+            }
+            .mobile-nav-link {
+                flex-direction: column;
+                padding: 0.5rem;
+                font-size: 0.75rem;
+            }
+            .mobile-nav-link i {
+                margin: 0 0 0.25rem 0;
+            }
+            body {
+                padding-bottom: 4rem;
+            }
+        }
     </style>
 </head>
-<body class="bg-pink-100 min-h-screen py-8">
-    <div class="container mx-auto px-4">
-        <!-- Breadcrumb -->
-        <div class="text-sm mb-8">
-            <a href="index.html" class="text-gray-600 hover:text-pink-500">Home</a>
-            <span class="mx-2 text-gray-400">/</span>
-            <span class="text-gray-800">Profile</span>
+<body class="bg-pink-100 min-h-screen py-4 md:py-8">
+    <div class="container mx-auto px-4 md:px-6">
+        <!-- Button Container di bagian atas -->
+        <div class="button-container mb-6">
+            <a href="index.html" class="btn btn-secondary">
+                <i class="fas fa-arrow-left"></i>
+                Kembali ke Beranda
+            </a>
+            <button onclick="saveProfile()" class="btn btn-primary">
+                <i class="fas fa-save"></i>
+                Simpan Perubahan
+            </button>
         </div>
 
-        <div class="grid md:grid-cols-12 gap-8">
+        <!-- Profile Section -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8">
             <!-- Profile Card -->
             <div class="md:col-span-4">
-                <div class="profile-card p-6">
+                <div class="profile-card p-4 md:p-6">
                     <div class="profile-header">
-                        <div class="profile-avatar mb-4 relative group">
-                            <img id="profileImage" src="assets/images/fab.jpg" alt="Profile Picture" class="w-full h-full object-cover">
+                        <div class="profile-avatar mb-4 relative group w-32 h-32 md:w-40 md:h-40 mx-auto">
+                            <img id="profileImage" src="assets/images/fab.jpg" alt="Profile Picture" class="w-full h-full object-cover rounded-full">
                             <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity cursor-pointer">
                                 <label for="imageUpload" class="text-white cursor-pointer">
                                     <i class="fas fa-camera text-2xl"></i>
@@ -104,30 +186,30 @@
             </div>
 
             <!-- Profile Info & Projects -->
-            <div class="md:col-span-8 space-y-8">
+            <div class="md:col-span-8">
                 <!-- Profile Information -->
-                <div class="profile-card p-6">
-                    <div class="flex justify-between items-center mb-6">
-                        <h2 class="text-xl font-bold">Informasi Profil</h2>
+                <div class="profile-card p-4 md:p-6">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
+                        <h2 class="text-xl font-bold mb-4 md:mb-0">Informasi Profil</h2>
                     </div>
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                        <div class="space-y-2">
                             <h3 class="text-gray-500 text-sm">Nama Lengkap</h3>
                             <p class="text-gray-800" contenteditable="true" id="fullName">Nama User</p>
                         </div>
-                        <div>
+                        <div class="space-y-2">
                             <h3 class="text-gray-500 text-sm">Email</h3>
                             <p class="text-gray-800" contenteditable="true" id="email">user@example.com</p>
                         </div>
-                        <div>
+                        <div class="space-y-2">
                             <h3 class="text-gray-500 text-sm">No. Telepon</h3>
                             <p class="text-gray-800" contenteditable="true" id="phone">(239) 816-9029</p>
                         </div>
-                        <div>
+                        <div class="space-y-2">
                             <h3 class="text-gray-500 text-sm">Mobile</h3>
                             <p class="text-gray-800" contenteditable="true" id="mobile">(320) 380-4539</p>
                         </div>
-                        <div class="md:col-span-2">
+                        <div class="md:col-span-2 space-y-2">
                             <h3 class="text-gray-500 text-sm">Alamat</h3>
                             <p class="text-gray-800" contenteditable="true" id="address">Alamat User</p>
                         </div>
@@ -135,7 +217,7 @@
                 </div>
 
                 <!-- Gaming Progress -->
-                <div class="profile-card p-6">
+                <div class="profile-card p-4 md:p-6 mt-4 md:mt-8">
                     <h2 class="text-xl font-bold mb-6">Gaming Progress</h2>
                     <div class="space-y-6">
                         <div>
@@ -193,6 +275,99 @@
                 }
             }
         }, true);
+
+        // Load saved profile data when page loads
+        window.addEventListener('load', function() {
+            const savedProfile = JSON.parse(localStorage.getItem('profileData') || '{}');
+            if (savedProfile) {
+                document.getElementById('profileName').textContent = savedProfile.profileName || 'Nama Lengkap';
+                document.getElementById('profileRole').textContent = savedProfile.profileRole || 'Gamer Enthusiast';
+                document.getElementById('fullName').textContent = savedProfile.fullName || 'Nama User';
+                document.getElementById('email').textContent = savedProfile.email || 'user@example.com';
+                document.getElementById('phone').textContent = savedProfile.phone || '(239) 816-9029';
+                document.getElementById('mobile').textContent = savedProfile.mobile || '(320) 380-4539';
+                document.getElementById('address').textContent = savedProfile.address || 'Alamat User';
+                
+                // Load profile image if exists
+                if (savedProfile.profileImage) {
+                    document.getElementById('profileImage').src = savedProfile.profileImage;
+                }
+            }
+        });
+
+        // Save profile data
+        function saveProfile() {
+            const profileData = {
+                profileName: document.getElementById('profileName').textContent,
+                profileRole: document.getElementById('profileRole').textContent,
+                fullName: document.getElementById('fullName').textContent,
+                email: document.getElementById('email').textContent,
+                phone: document.getElementById('phone').textContent,
+                mobile: document.getElementById('mobile').textContent,
+                address: document.getElementById('address').textContent,
+                profileImage: document.getElementById('profileImage').src
+            };
+            
+            localStorage.setItem('profileData', JSON.stringify(profileData));
+            alert('Profil berhasil disimpan!');
+        }
+
+        // Handle image upload with preview and storage
+        document.getElementById('imageUpload').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const imageUrl = e.target.result;
+                    document.getElementById('profileImage').src = imageUrl;
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+</body>
+
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav md:hidden">
+        <div class="mobile-nav-item">
+            <a href="index.html" class="mobile-nav-link">
+                <i class="fas fa-home"></i>
+                <span>Beranda</span>
+            </a>
+        </div>
+        <div class="mobile-nav-item">
+            <a href="booking.html" class="mobile-nav-link">
+                <i class="fas fa-calendar-alt"></i>
+                <span>Booking</span>
+            </a>
+        </div>
+        <div class="mobile-nav-item">
+            <a href="profile.html" class="mobile-nav-link active">
+                <i class="fas fa-user"></i>
+                <span>Profil</span>
+            </a>
+        </div>
+        <div class="mobile-nav-item">
+            <a href="jadwal_ruangan.html" class="mobile-nav-link">
+                <i class="fas fa-clock"></i>
+                <span>Jadwal</span>
+            </a>
+        </div>
+    </nav>
+
+    <script>
+        // Handle image upload
+        document.getElementById('imageUpload').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const imageUrl = e.target.result;
+                    document.getElementById('profileImage').src = imageUrl;
+                }
+                reader.readAsDataURL(file);
+            }
+        });
     </script>
 </body>
 </html>
